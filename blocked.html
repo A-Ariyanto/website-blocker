@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Blocked - Stay Focused</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="blocked-page">
+    <div class="blocked-container">
+        <div class="blocked-icon">🚫</div>
+        <h1 class="blocked-title">Website Blocked</h1>
+        <div class="blocked-site" id="blockedSite">This site has been blocked</div>
+        
+        <div class="time-display" id="currentTime">12:00:00</div>
+        <div class="date-display" id="currentDate">Monday, January 1, 2024</div>
+        
+        <div class="blocked-message">
+            This website has been blocked to help you stay focused and productive.
+        </div>
+
+        <div class="focus-tips">
+            <h3>🎯 Stay on Track</h3>
+            <ul>
+                <li>Take a deep breath and refocus on your goals</li>
+                <li>Use this time for something productive</li>
+                <li>Remember why you blocked this site</li>
+                <li>Consider taking a short break and coming back to work</li>
+                <li>Try the 25-minute focus technique</li>
+            </ul>
+        </div>
+
+        <div class="quote" id="quote">
+            "The successful warrior is the average person with laser-like focus." - Bruce Lee
+        </div>
+
+        <div class="button-group">
+            <button class="btn" onclick="window.close()">Close Tab</button>
+            <button class="btn" onclick="window.history.back()">Go Back</button>
+        </div>
+    </div>
+
+    <script>
+        // Update time every second
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            const dateString = now.toLocaleDateString('en-US', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            
+            document.getElementById('currentTime').textContent = timeString;
+            document.getElementById('currentDate').textContent = dateString;
+        }
+
+        // Get blocked site from URL parameters
+        function getBlockedSite() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const blockedSite = urlParams.get('site');
+            if (blockedSite) {
+                document.getElementById('blockedSite').textContent = `${blockedSite} has been blocked`;
+            }
+        }
+
+        // Random motivational quotes
+        const quotes = [
+            '"The successful warrior is the average person with laser-like focus." - Bruce Lee',
+            '"Concentrate all your thoughts upon the work at hand." - Alexander Graham Bell',
+            '"Focus is about saying no to 1,000 good ideas." - Steve Jobs',
+            '"The art of being wise is knowing what to overlook." - William James',
+            '"You can do two things at once, but you can\'t focus effectively on two things at once." - Gary Keller'
+        ];
+
+        // Initialize
+        updateTime();
+        setInterval(updateTime, 1000);
+        getBlockedSite();
+
+        // Change quote every 10 seconds
+        setInterval(() => {
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            document.getElementById('quote').textContent = randomQuote;
+        }, 10000);
+    </script>
+</body>
+</html>
