@@ -30,6 +30,8 @@ A simple Chrome extension to block distracting websites and improve productivity
 5. To unblock a website, click the "Remove" button next to it
 6. Use the "Enable/Disable Blocking" button to temporarily turn off all blocking
 
+test
+
 ## Troubleshooting
 
 If the extension is not working:
